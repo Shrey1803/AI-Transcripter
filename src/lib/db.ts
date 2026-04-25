@@ -76,9 +76,20 @@ export async function getPool(): Promise<Pool> {
   return poolPromise;
 }
 
-export default {
-  query: async (...args: Parameters<Pool["query"]>) => {
-    const pool = await poolPromise;
-    return pool.query(...(args as [any]));
+// Proxy that forwards every property access to the resolved Pool instance.
+// This lets callers use `pool.query(...)`, `pool.end()`, etc. without awaiting
+// the promise themselves, while still benefiting from the async retry logic.
+const poolProxy = new Proxy({} as Pool, {
+  get(_target, prop: string | symbol) {
+    return async (...args: unknown[]) => {
+      const pool = await poolPromise;
+      const value = (pool as any)[prop];
+      if (typeof value === "function") {
+        return (value as Function).apply(pool, args);
+      }
+      return value;
+    };
   },
-} as Pick<Pool, "query">;
+});
+
+export default poolProxy;
