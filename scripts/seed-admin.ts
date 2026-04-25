@@ -3,7 +3,8 @@ import "dotenv/config";
 process.env.AUTH_DISABLE_SIGNUP = "false";
 
 async function main() {
-  const { default: pool } = await import("../src/lib/db");
+  const { getPool } = await import("../src/lib/db");
+  const pool = await getPool();  
   const { auth } = await import("../src/lib/auth");
 
   const adminUsername = process.env.ADMIN_USERNAME;
