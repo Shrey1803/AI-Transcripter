@@ -1,0 +1,234 @@
+:root {
+  --bg-1: #090d1f;
+  --bg-2: #2a145c;
+  --bg-3: #0f1f3d;
+  --text: #e7edff;
+  --text-dim: #b8c1df;
+  --border: rgba(255, 255, 255, 0.18);
+  --card: rgba(255, 255, 255, 0.1);
+  --danger: #ff7c8e;
+  --brand-a: #00d0ff;
+  --brand-b: #8e54ff;
+  --brand-c: #ff49bc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at 15% 15%, #2e2a86 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, #0d4f7e 0%, transparent 40%),
+    linear-gradient(140deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+}
+
+body {
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.center-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 460px;
+}
+
+.neo-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.neo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.neo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1rem;
+}
+
+.constellation-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.constellation-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto;
+}
+
+.constellation-ui {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  display: grid;
+  gap: 0.5rem;
+  width: min(280px, calc(100vw - 28px));
+}
+
+.constellation-info {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.neo-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.neo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.neo-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-a), var(--brand-b), var(--brand-c));
+}
+
+.label {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+
+.neo-input,
+.neo-file {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  padding: 0.78rem 0.9rem;
+}
+
+.neo-input::placeholder {
+  color: #ccd3ec;
+}
+
+.neo-button,
+.button {
+  border: 0;
+  border-radius: 14px;
+  padding: 0.78rem 1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--brand-a), var(--brand-b), var(--brand-c));
+}
+
+.neo-button.secondary,
+.button.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border);
+}
+
+.neo-button:disabled,
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.neo-output {
+  border-top: 1px solid var(--border);
+  padding-top: 0.65rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.neo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.neo-list-item {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.muted,
+.time {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 700px) {
+  .neo-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

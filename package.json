@@ -1,0 +1,31 @@
+{
+  "name": "audio-transcript-admin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:migrate": "npx @better-auth/cli@latest migrate --yes",
+    "seed:admin": "tsx scripts/seed-admin.ts"
+  },
+  "dependencies": {
+    "better-auth": "^1.3.9",
+    "dotenv": "^16.4.7",
+    "next": "^15.3.3",
+    "pg": "^8.13.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.177.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/three": "^0.177.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
